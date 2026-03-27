@@ -1,5 +1,5 @@
 {
-  "name": "Auto-fill-content",
+  "name": "VN Stock Data Filler",
   "version": "1.0.0",
   "description": "Your Figma Plugin",
   "main": "code.js",
@@ -7,6 +7,7 @@
     "build": "tsc -p tsconfig.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "sync": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$ErrorActionPreference='Stop'; if (-not (Test-Path .git)) { throw 'Chưa có .git. Hãy chạy: git init' }; $changes = git status --porcelain; if (-not $changes) { Write-Host 'No changes to commit.'; exit 0 }; git add -A; $ts = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'; git commit -m ('auto: save ' + $ts); git push\"",
     "watch": "npm run build -- --watch"
   },
   "author": "",
